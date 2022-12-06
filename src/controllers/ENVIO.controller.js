@@ -43,16 +43,17 @@ export const deleteENVIO = async (req, res) => {
 
 export const createENVIO = async (req, res) => {
   try {
-    const { nombre, email,contraseña,telefono,rfc } = req.body;
+    const { idCliente, idPedido,fecha,estatus } = req.body;
     const [rows] = await pool.query(
-      "INSERT INTO ENVIO (nombre,email,contraseña,telefono,rfc) VALUES (?, ?, ?, ?, ?)",
+      "INSERT INTO ENVIO (idCliente,idPedido,fecha,estatus) VALUES (?, ?, ?, ?)",
       [nombre, email,contraseña,telefono,rfc]
     );
-    res.status(201).json({ id: rows.insertId, nombre, email,contraseña, telefono, rfc });
+    res.status(201).json({ id: rows.insertId, idCliente, idPedido,fecha, estatus });
   } catch (error) {
     return res.status(500).json({ message: "Something goes wrong" });
   }
 };
+
 
 export const updateENVIO = async (req, res) => {
   try {
