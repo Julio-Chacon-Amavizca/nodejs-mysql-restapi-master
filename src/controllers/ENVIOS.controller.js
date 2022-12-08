@@ -17,7 +17,7 @@ export const getENVIO = async (req, res) => {
     ]);
 
     if (rows.length <= 0) {
-      return res.status(404).json({ message: "ENVIO not found" });
+      return res.status(404).json({ message: "ENVIOS not found" });
     }
 
     res.json(rows[0]);
@@ -43,26 +43,26 @@ export const deleteENVIO = async (req, res) => {
 
 export const createENVIO = async (req, res) => {
   try {
-    const { idCliente, idPedido,fecha,estatus } = req.body;
+    const { idEnvio, NoGuia,NoVta,fecha } = req.body;
     const [rows] = await pool.query(
-      "INSERT INTO ENVIOS (idCliente,idPedido,fecha,estatus) VALUES (?, ?, ?, ?)",
-      [idCliente, idPedido,fecha,estatus]
+      "INSERT INTO ENVIOS (idEnvio, NoGuia,NoVta,fecha) VALUES (?, ?, ?, ?)",
+      [idEnvio, NoGuia,NoVta,fecha]
     );
-    res.status(201).json({ id: rows.insertId, idCliente, idPedido,fecha, estatus });
+    res.status(201).json({ id: rows.insertId, idEnvio, NoGuia,NoVta,fecha });
   } catch (error) {
     return res.status(500).json({ message: "Something goes wrong" });
   }
 };
-
+[{"idEnvio":1,"NoGuia":"123456789","NoVta":1,"fecha":"2022-12-11T00:00:00.000Z"}]
 
 export const updateENVIO = async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, salary } = req.body;
+    const { NoGuia,NoVta,fecha } = req.body;
 
     const [result] = await pool.query(
-      "UPDATE ENVIO SET nombre = IFNULL(?, nombre), email = IFNULL(?, email), contraseña  = IFNULL(?,contraseña), telefono = IFNULL(?,telefono), rfc= IFNULL(?,rfc) WHERE id = ?",
-      [name, salary, id]
+      "UPDATE ENVIO SET NoGuia = IFNULL(?, NoGuia), NoVta = IFNULL(?, NoVta), fecha  = IFNULL(?,fecha) WHERE id = ?",
+      [NoGuia,NoVta,fecha, id]
     );
 
     if (result.affectedRows === 0)
