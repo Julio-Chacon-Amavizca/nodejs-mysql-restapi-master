@@ -53,7 +53,7 @@ export const createENVIO = async (req, res) => {
     return res.status(500).json({ message: "Something goes wrong" });
   }
 };
-[{"idEnvio":1,"NoGuia":"123456789","NoVta":1,"fecha":"2022-12-11T00:00:00.000Z"}]
+
 
 export const updateENVIO = async (req, res) => {
   try {
