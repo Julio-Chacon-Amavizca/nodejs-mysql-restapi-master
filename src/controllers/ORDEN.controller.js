@@ -1,5 +1,7 @@
 import { pool } from "../db.js";
 
+
+
 export const getORDENS = async (req, res) => {
   try {
     const [rows] = await pool.query("SELECT * FROM ORDEN");
