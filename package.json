@@ -14,6 +14,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.0.2",
     "express": "^4.18.2",
     "mysql2": "^2.3.3"
@@ -27,5 +28,13 @@
   },
   "directories": {
     "test": "tests"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Julio-Chacon-Amavizca/nodejs-mysql-restapi-master.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Julio-Chacon-Amavizca/nodejs-mysql-restapi-master/issues"
+  },
+  "homepage": "https://github.com/Julio-Chacon-Amavizca/nodejs-mysql-restapi-master#readme"
 }
