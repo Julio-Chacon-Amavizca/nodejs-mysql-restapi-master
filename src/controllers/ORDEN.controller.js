@@ -12,7 +12,7 @@ export const getORDENS = async (req, res) => {
 export const getORDEN = async (req, res) => {
   try {
     const { id } = req.params;
-    const [rows] = await pool.query("SELECT * FROM ORDEN WHERE id = ?", [
+    const [rows] = await pool.query("SELECT * FROM ORDEN WHERE idPedidos = ?", [
       id,
     ]);
 
