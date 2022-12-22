@@ -45,7 +45,7 @@ export const createORDEN = async (req, res) => {
   try {
     const {  idPedidos,IdProducto, nomProducto, precioUnitario, cantidad, monto, fecha } = req.body;
     const [rows] = await pool.query(
-      "INSERT INTO ORDEN (idPedidos, IdProducto, nomProducto, precioUnitario, cantidad, monto, fecha) VALUES (?, ?, ?, ?, ?, ?)",
+      "INSERT INTO ORDEN (idPedidos, IdProducto, nomProducto, precioUnitario, cantidad, monto, fecha) VALUES (?, ?, ?, ?, ?, ?, ?)",
       [ idPedidos,IdProducto, nomProducto, precioUnitario, cantidad, monto, fecha ]
     );
     res.status(201).json({ id: rows.insertId, idPedidos,IdProducto, nomProducto, precioUnitario, cantidad, monto, fecha });
