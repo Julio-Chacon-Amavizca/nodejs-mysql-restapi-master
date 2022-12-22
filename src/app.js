@@ -6,6 +6,7 @@ import indexRoutes from "./routes/index.routes.js";
 import CLIENTERoutes from "./routes/CLIENTE.routes.js";
 import ENVIORoutes from "./routes/ENVIO.routes.js";
 import ENVIOSRoutes from "./routes/ENVIOS.routes.js";
+import ORDENRoutes from "./routes/ORDEN.routes.js";
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use("/api", employeesRoutes);
 app.use("/api", CLIENTERoutes);
 app.use("/api", ENVIORoutes);
 app.use("/api", ENVIOSRoutes);
+app.use("/api", ORDENRoutes);
 
 
 app.use((req, res, next) => {
