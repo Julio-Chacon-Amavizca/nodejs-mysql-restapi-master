@@ -29,7 +29,7 @@ export const getORDEN = async (req, res) => {
 export const deleteORDEN = async (req, res) => {
   try {
     const { id } = req.params;
-    const [rows] = await pool.query("DELETE FROM employee WHERE id = ?", [id]);
+    const [rows] = await pool.query("DELETE FROM ORDEN WHERE idPedidos = ?", [id]);
 
     if (rows.affectedRows <= 0) {
       return res.status(404).json({ message: "Employee not found" });
@@ -43,12 +43,12 @@ export const deleteORDEN = async (req, res) => {
 
 export const createORDEN = async (req, res) => {
   try {
-    const { name, salary } = req.body;
+    const {  IdProducto, nomProducto, precioUnitario, cantidad, monto, fecha } = req.body;
     const [rows] = await pool.query(
-      "INSERT INTO employee (name, salary) VALUES (?, ?)",
-      [name, salary]
+      "INSERT INTO ORDEN (idPedidos, IdProducto, nomProducto, precioUnitario, cantidad, monto, fecha) VALUES (?, ?, ?, ?, ?, ?)",
+      [ IdProducto, nomProducto, precioUnitario, cantidad, monto, fecha ]
     );
-    res.status(201).json({ id: rows.insertId, name, salary });
+    res.status(201).json({ id: rows.insertId, IdProducto, nomProducto, precioUnitario, cantidad, monto, fecha });
   } catch (error) {
     return res.status(500).json({ message: "Something goes wrong" });
   }
