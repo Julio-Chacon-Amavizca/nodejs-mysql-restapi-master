@@ -48,7 +48,7 @@ export const createORDEN = async (req, res) => {
       "INSERT INTO ORDEN (idPedidos, IdProducto, nomProducto, precioUnitario, cantidad, monto, fecha) VALUES (?, ?, ?, ?, ?, ?, ?)",
       [ idPedidos,IdProducto, nomProducto, precioUnitario, cantidad, monto, fecha ]
     );
-    res.status(201).json({ id: rows.idPedidos,IdProducto, nomProducto, precioUnitario, cantidad, monto, fecha });
+    res.status(201).json({ id: rows.insertId, idPedidos,IdProducto, nomProducto, precioUnitario, cantidad, monto, fecha });
   } catch (error) {
     return res.status(500).json({ message: "Something goes wrong" });
   }
