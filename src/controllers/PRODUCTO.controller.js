@@ -73,6 +73,7 @@ export const updatePruducto = async (req, res) => {
 
     res.json(rows[0]);
   } catch (error) {
-    return res.status(500).json({ message: "Something goes wrong" });
+    return res.status(500).json({ message: "Something goes wrong" }); 
   }
 };
+ 
