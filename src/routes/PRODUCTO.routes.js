@@ -1,15 +1,10 @@
 import { Router } from "express";
 import {
-  createORDEN,
-  createPruducto,
-  deleteORDEN,
-  deletePruducto,
-  getORDEN,
-  getORDENS,
-  getPruducto,
-  getPruductos,
-  updateORDEN,
-  updatePruducto,
+    createPruducto,
+    deletePruducto,
+    getPruducto,
+    getPruductos,
+    updatePruducto,
 } from "../controllers/PRODUCTO.controller.js";
 
 const router = Router();
