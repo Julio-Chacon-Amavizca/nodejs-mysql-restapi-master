@@ -21,6 +21,6 @@ router.delete("/ENVIOS/:id", deleteENVIO);
 // INSERT An Employee
 router.post("/ENVIOS", createENVIO);
 
-router.patch("/ENVIOS/:id", updateENVIO);
+router.put("/ENVIOS/:id", updateENVIO);
 
 export default router;
