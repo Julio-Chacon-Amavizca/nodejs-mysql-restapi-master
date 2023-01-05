@@ -10,6 +10,7 @@ import ENVIORoutes from "./routes/ENVIO.routes.js";
 import ENVIOSRoutes from "./routes/ENVIOS.routes.js";
 import ORDENRoutes from "./routes/ORDEN.routes.js";
 import PRODUCTORoutes from "./routes/PRODUCTO.routes.js";
+import CARRITORoutes from "./routes/CARRITO.routes.js";
 
 const app = express();
 
@@ -26,6 +27,8 @@ app.use("/api", ENVIORoutes);
 app.use("/api", ENVIOSRoutes);
 app.use("/api", ORDENRoutes);
 app.use("/api", PRODUCTORoutes);
+app.use("/api", CARRITORoutes);
+
 
 
 app.use((req, res, next) => {
