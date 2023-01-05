@@ -43,12 +43,12 @@ export const deleteENVIO = async (req, res) => {
 
 export const createENVIO = async (req, res) => {
   try {
-    const { idEnvio, NoGuia,NoVta,fecha } = req.body;
+    const { idEnvio, edoEntr, NoGuia,NoVta, fecha } = req.body;
     const [rows] = await pool.query(
-      "INSERT INTO ENVIOS (idEnvio, NoGuia,NoVta,fecha) VALUES (?, ?, ?, ?)",
+      "INSERT INTO ENVIOS (idEnvio, edoEntr,NoGuia,NoVta,fecha) VALUES (?, ?, ?, ?, ?)",
       [idEnvio, NoGuia,NoVta,fecha]
     );
-    res.status(201).json({ id: rows.insertId, idEnvio, NoGuia,NoVta,fecha });
+    res.status(201).json({ id: rows.insertId, idEnvio,edoEntr, NoGuia,NoVta,fecha });
   } catch (error) {
     return res.status(500).json({ message: "Something goes wrong" });
   }
@@ -58,10 +58,10 @@ export const createENVIO = async (req, res) => {
 export const updateENVIO = async (req, res) => {
   try {
     const { id } = req.params;
-    const { NoGuia,NoVta,fecha } = req.body;
+    const { edoEntr,NoGuia,NoVta,fecha } = req.body;
 
     const [result] = await pool.query(
-      "UPDATE ENVIO SET NoGuia = IFNULL(?, NoGuia), NoVta = IFNULL(?, NoVta), fecha  = IFNULL(?,fecha) WHERE id = ?",
+      "UPDATE ENVIO SET NoGuia = IFNULL(?, NoGuia),edoEntr= IFNULL(?, edoEntr), NoVta = IFNULL(?, NoVta), fecha  = IFNULL(?,fecha) WHERE id = ?",
       [NoGuia,NoVta,fecha, id]
     );
 
