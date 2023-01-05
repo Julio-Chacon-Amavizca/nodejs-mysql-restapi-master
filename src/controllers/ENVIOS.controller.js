@@ -61,7 +61,7 @@ export const updateENVIO = async (req, res) => {
     const { edoEntr,NoGuia,NoVta,fecha } = req.body;
 
     const [result] = await pool.query(
-      "UPDATE ENVIO SET edoEntr= IFNULL(?, edoEntr), NoGuia = IFNULL(?, NoGuia), NoVta = IFNULL(?, NoVta), fecha  = IFNULL(?,fecha) WHERE id = ?",
+      "UPDATE ENVIO SET edoEntr= IFNULL(?, edoEntr), NoGuia = IFNULL(?, NoGuia), NoVta = IFNULL(?, NoVta), fecha  = IFNULL(?,fecha) WHERE idEnvio = ?",
       [edoEntr,NoGuia,NoVta,fecha, id]
     );
 
