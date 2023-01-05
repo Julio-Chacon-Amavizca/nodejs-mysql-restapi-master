@@ -45,7 +45,7 @@ export const createENVIO = async (req, res) => {
   try {
     const { edoEntr, NoGuia,NoVta, fecha } = req.body;
     const [rows] = await pool.query(
-      "INSERT INTO ENVIOS (edoEntr,NoGuia,NoVta,fecha) VALUES (?, ?, ?, ?, ?)",
+      "INSERT INTO ENVIOS (edoEntr,NoGuia,NoVta,fecha) VALUES ( ?, ?, ?, ?)",
       [ edoEntr, NoGuia,NoVta,fecha]
     );
     res.status(201).json({ id: rows.insertId,edoEntr, NoGuia,NoVta,fecha });
