@@ -31,7 +31,7 @@ export const getCARRITO = async (req, res) => {
 export const deleteCARRITO = async (req, res) => {
   try {
     const { id } = req.params;
-    const [rows] = await pool.query("DELETE FROM ORDEN WHERE idPedidos = ?", [id]);
+    const [rows] = await pool.query("DELETE FROM CARRITO WHERE idCarrito = ?", [id]);
 
     if (rows.affectedRows <= 0) {
       return res.status(404).json({ message: "CARRITO not found" });
@@ -45,12 +45,13 @@ export const deleteCARRITO = async (req, res) => {
 
 export const createCARRITO = async (req, res) => {
     try {
-      const { idPedidos,idProducto,nomProducto,precioUnitario,cantidad,monto } = req.body;
+      const { idCarrito,prodcto,precio,cantidad,subtotal,montototal } = req.body;
       const [rows] = await pool.query(
-        "INSERT INTO ORDEN (idPedidos,idProducto,nomProducto,precioUnitario,cantidad,monto) VALUES ( ?, ?, ?, ?, ?, ? )",
-        [ idPedidos,idProducto,nomProducto,precioUnitario,cantidad,monto ]
+        "INSERT INTO CARRITO (idCarrito,prodcto,precio,cantidad,subtotal,montototal) VALUES ( ?, ?, ?, ?, ?, ? )",
+        [ idCarrito,prodcto,precio,cantidad,subtotal,montototal]
+  
       );
-      res.status(201).json({ id: rows.insertId, idPedidos,idProducto,nomProducto,precioUnitario,cantidad,monto});
+      res.status(201).json({ id: rows.insertId, idCarrito,prodcto,precio,cantidad,subtotal,montototal});
     } catch (error) {
       return res.status(500).json({ message: "Something goes wrong" });
     }
