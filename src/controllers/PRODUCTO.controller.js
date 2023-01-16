@@ -43,12 +43,12 @@ export const deletePruducto = async (req, res) => {
 
 export const createPruducto = async (req, res) => {
   try {
-    const { nombre, descripcion,distribuidor,precio,tipos } = req.body;
+    const { nombre, descripcion,distribuidor,precio,tipo } = req.body;
     const [rows] = await pool.query(
-      "INSERT INTO PRODUCTO (nombre, descripcion, distribuidor, precio, tipos) VALUES (?, ?, ?, ?, ?)",
+      "INSERT INTO PRODUCTO (nombre, descripcion, distribuidor, precio, tipo) VALUES (?, ?, ?, ?, ?)",
       [nombre, descripcion,distribuidor,precio,tipos]
     );
-    res.status(201).json({ id: rows.insertId, nombre, descripcion,distribuidor,precio,tipos });
+    res.status(201).json({ id: rows.insertId, nombre, descripcion,distribuidor,precio,tipo });
   } catch (error) {
     return res.status(500).json({ message: "Something goes wrong" });
   }
