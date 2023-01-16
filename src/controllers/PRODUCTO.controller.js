@@ -29,7 +29,7 @@ export const getPruducto = async (req, res) => {
 export const deletePruducto = async (req, res) => {
   try {
     const { idPruducto } = req.params;
-    const [rows] = await pool.query("DELETE FROM CLIENTE WHERE idPruducto = ?", [idPruducto]);
+    const [rows] = await pool.query("DELETE FROM PRODUCTO WHERE idPruducto = ?", [idPruducto]);
 
     if (rows.affectedRows <= 0) {
       return res.status(404).json({ message: "pruducto not found" });
@@ -43,12 +43,12 @@ export const deletePruducto = async (req, res) => {
 
 export const createPruducto = async (req, res) => {
   try {
-    const { nombre, email,contraseña,telefono,rfc } = req.body;
+    const { nombre, descripcion,distribuidor,precio,tipos } = req.body;
     const [rows] = await pool.query(
-      "INSERT INTO CLIENTE (nombre,email,contraseña,telefono,rfc) VALUES (?, ?, ?, ?, ?)",
-      [nombre, email,contraseña,telefono,rfc]
+      "INSERT INTO PRODUCTO (nombre, descripcion, distribuidor, precio, tipos) VALUES (?, ?, ?, ?, ?)",
+      [nombre, descripcion,distribuidor,precio,tipos]
     );
-    res.status(201).json({ id: rows.insertId, nombre, email,contraseña, telefono, rfc });
+    res.status(201).json({ id: rows.insertId, nombre, descripcion,distribuidor,precio,tipos });
   } catch (error) {
     return res.status(500).json({ message: "Something goes wrong" });
   }
