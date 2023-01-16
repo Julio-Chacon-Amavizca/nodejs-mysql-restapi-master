@@ -56,11 +56,11 @@ export const createCLIENTE = async (req, res) => {
 
 export const updateCLIENTE = async (req, res) => {
   try {
-    const { idEnvio } = req.params;
+    const { idCliente } = req.params;
     const { nombre, email,contraseña,telefono,rfc } = req.body;
 
     const [result] = await pool.query(
-      "UPDATE CLIENTE SET nombre = IFNULL(?, nombre), email = IFNULL(?, email), contraseña  = IFNULL(?,contraseña), telefono = IFNULL(?,telefono), rfc= IFNULL(?,rfc) WHERE idEnvio = ?",
+      "UPDATE CLIENTE SET nombre = IFNULL(?, nombre), email = IFNULL(?, email), contraseña  = IFNULL(?,contraseña), telefono = IFNULL(?,telefono), rfc= IFNULL(?,rfc) WHERE idCliente = ?",
       [nombre, email,contraseña, telefono,rfc,idEnvio]
     );
 
