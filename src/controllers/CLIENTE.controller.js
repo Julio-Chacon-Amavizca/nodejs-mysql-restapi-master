@@ -43,12 +43,12 @@ export const deleteCLIENTE = async (req, res) => {
 
 export const createCLIENTE = async (req, res) => {
   try {
-    const { nombre, email,contraseña,telefono,rfc } = req.body;
+    const { nombre, email,contraseña,telefono,rfc,address } = req.body;
     const [rows] = await pool.query(
-      "INSERT INTO CLIENTE (nombre,email,contraseña,telefono,rfc) VALUES (?, ?, ?, ?, ?)",
-      [nombre, email,contraseña,telefono,rfc]
+      "INSERT INTO CLIENTE (nombre,email,contraseña,telefono,rfc,address) VALUES (?, ?, ?, ?, ?,?)",
+      [nombre, email,contraseña,telefono,rfc,address]
     );
-    res.status(201).json({ id: rows.insertId, nombre, email,contraseña, telefono, rfc });
+    res.status(201).json({ id: rows.insertId, nombre, email,contraseña, telefono, rfc,address });
   } catch (error) {
     return res.status(500).json({ message: "Something goes wrong" });
   }
@@ -57,11 +57,11 @@ export const createCLIENTE = async (req, res) => {
 export const updateCLIENTE = async (req, res) => {
   try {
     const { idCliente } = req.params;
-    const { nombre, email,contraseña,telefono,rfc } = req.body;
+    const { nombre, email,contraseña,telefono,rfc,address } = req.body;
 
     const [result] = await pool.query(
-      "UPDATE CLIENTE SET nombre = IFNULL(?, nombre), email = IFNULL(?, email), contraseña  = IFNULL(?,contraseña), telefono = IFNULL(?,telefono), rfc= IFNULL(?,rfc) WHERE idCliente = ?",
-      [nombre, email,contraseña, telefono,rfc,idEnvio]
+      "UPDATE CLIENTE SET nombre = IFNULL(?, nombre), email = IFNULL(?, email), contraseña  = IFNULL(?,contraseña), telefono = IFNULL(?,telefono), rfc= IFNULL(?,rfc),address= IFNULL(?,rfc) WHERE idCliente = ?",
+      [nombre, email,contraseña, telefono,rfc,address]
     );
 
     if (result.affectedRows === 0)
